@@ -1,4 +1,4 @@
-package io.gustavo.entity;
+package io.gustavo.starwars.entity;
 
 import javax.persistence.Embeddable;
 

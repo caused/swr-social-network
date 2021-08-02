@@ -15,10 +15,10 @@ public class TraitorReport implements Report {
 		var result = new ReportResult();
 		
 		var rebels = rebelRepository.findAll();
-		var count = rebels.size();
-		var traitor = rebels.stream().filter(rebel -> rebel.getAccusations() > 2).count();
+		double count = rebels.size();
+		double traitor = rebelRepository.findTraitors().size();
 		
-		result.setValue((traitor / count) * 100d);
+		result.setValue(String.valueOf((traitor / count) * 100d));
 		
 		return result;
 	}

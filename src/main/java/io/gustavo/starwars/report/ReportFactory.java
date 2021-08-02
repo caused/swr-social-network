@@ -19,17 +19,17 @@ public class ReportFactory {
 		this.itemRepository = itemRepository;
 	}
 
-	public Report getReport(String type, String resource) {
-		if(type.equals(ReportType.TRAITORS.toString())) {
+	public Report getReport(ReportType type, String resource) {
+		if(type.equals(ReportType.TRAITORS)) {
 			return new TraitorReport(rebelRepository);
-		}else if(type.equals(ReportType.REBELS.toString())) {
+		}else if(type.equals(ReportType.REBELS)) {
 			return new RebelReport(rebelRepository);
-		}else if(type.equals(ReportType.RESOURCE_PER_REBEL.toString())) {
+		}else if(type.equals(ReportType.RESOURCE_PER_REBEL)) {
 			return new ResourceReport(resource, inventoryRepository, itemRepository, rebelRepository);
-		}else if(type.equals(ReportType.POINT_LOST.toString())) {
-			return new PointLostReport();
+		}else if(type.equals(ReportType.POINT_LOST)) {
+			return new PointLostReport(rebelRepository);
 		}else {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid report type");
 		}
 	}
 }

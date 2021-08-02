@@ -28,11 +28,12 @@ public class ResourceReport implements Report {
 		
 		var itemEntity = itemRepository.findByName(resource);
 		if(itemEntity != null) {
-			long count = rebelRepository.count();
-			List<InventoryEntity> allByItemEntity = inventoryRepository.findAllByItemEntity(itemEntity);
-			int sum = allByItemEntity.stream().mapToInt(InventoryEntity::getAmount).sum();
-		} else {
-			
+			double count = rebelRepository.count();
+			List<InventoryEntity> allByItemEntity = inventoryRepository.findAllByItem(itemEntity);
+			double sum = allByItemEntity.stream().mapToInt(InventoryEntity::getAmount).sum();
+			result.setValue(String.valueOf(sum / count));
+		}else {
+			result.setValue("Resource not found");
 		}
 		
 		return result;

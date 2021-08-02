@@ -2,13 +2,13 @@ package io.gustavo.starwars.report;
 
 public class ReportResult {
 
-	private Double value;
+	private String value;
 
-	public Double getValue() {
+	public String getValue() {
 		return value;
 	}
 
-	public void setValue(Double value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 	

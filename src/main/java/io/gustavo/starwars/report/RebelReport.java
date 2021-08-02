@@ -15,10 +15,10 @@ private RebelRepository rebelRepository;
 		var result = new ReportResult();
 		
 		var rebels = rebelRepository.findAll();
-		var count = rebels.size();
-		var rebelCount = rebels.stream().filter(rebel -> rebel.getAccusations() > 2).count();
+		double count = rebels.size();
+		double rebelCount = rebels.stream().filter(rebel -> rebel.getAccusations() < 3).count();
 		
-		result.setValue((rebelCount / count) * 100d);
+		result.setValue(String.valueOf((rebelCount / count) * 100d));
 		
 		return result;
 	}

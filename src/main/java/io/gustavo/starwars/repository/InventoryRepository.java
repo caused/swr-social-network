@@ -12,5 +12,5 @@ import io.gustavo.starwars.entity.ItemEntity;
 @Repository
 public interface InventoryRepository extends JpaRepository<InventoryEntity, InventoryPK>{
 
-	List<InventoryEntity> findAllByItemEntity (ItemEntity item);
+	List<InventoryEntity> findAllByItem (ItemEntity item);
 }

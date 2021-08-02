@@ -16,6 +16,9 @@ import io.gustavo.starwars.entity.Localization;
 import io.gustavo.starwars.exceptions.RebelNotFoundException;
 import io.gustavo.starwars.model.RebelModel;
 import io.gustavo.starwars.service.RebelService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/v1/rebels")
@@ -28,12 +31,22 @@ public class RebelController {
 		this.service = service;
 	}
 	
+	@ApiOperation(value = "Cria um novo rebelde", notes = "Cria um novo rebelde", response = RebelModel.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 201, message = "Rebelde criado com sucesso"),
+			@ApiResponse(code = 400, message = "Item de invetário não encontrado")
+	})
 	@PostMapping
 	public ResponseEntity<RebelModel> createRebel(@Valid @RequestBody RebelModel request){
 		var rebelCreated = service.createRebel(request);
 		return ResponseEntity.status(HttpStatus.CREATED).body(rebelCreated);
 	}
 	
+	@ApiOperation(value = "Atualiza localização de um rebelde", notes = "Atualiza localização de um rebelde", response = RebelModel.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Localização atualizada com sucesso"),
+			@ApiResponse(code = 404, message = "Rebelde não encontrado")
+	})
 	@PatchMapping("/{rebelId}/localization")
 	public ResponseEntity<RebelModel> updateLocalization(@PathVariable Long rebelId, @Valid @RequestBody Localization localization) throws RebelNotFoundException{
 		var updatedRebel = this.service.updateRebelLocalization(rebelId, localization);
@@ -41,6 +54,11 @@ public class RebelController {
 		return ResponseEntity.ok(updatedRebel);
 	}
 	
+	@ApiOperation(value = "Acusar um rebelde de traição", notes = "Acusar um rebelde de traição", response = RebelModel.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Rebelde acusasdo com sucesso"),
+			@ApiResponse(code = 404, message = "Rebelde não encontrado")
+	})
 	@PatchMapping("/{rebelId}/blame")
 	public ResponseEntity<RebelModel> blameRebel(@PathVariable Long rebelId) throws RebelNotFoundException{
 		var blameRebel = this.service.blameRemel(rebelId);

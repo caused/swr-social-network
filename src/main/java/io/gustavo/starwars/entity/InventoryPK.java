@@ -20,7 +20,7 @@ public class InventoryPK implements Serializable{
 	@Column(name = "item_id")
 	private Long itemId;
 	
-	public InventoryPK() {
+	private InventoryPK() {
 	}
 
 	public InventoryPK(Long rebelId, Long itemId) {

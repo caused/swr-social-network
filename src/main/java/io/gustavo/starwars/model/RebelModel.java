@@ -1,10 +1,14 @@
-package io.gustavo.starwars.model.request;
+package io.gustavo.starwars.model;
 
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-public class CreateRebelRequest {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class RebelModel {
+	
+	private Long id;
 
 	@NotNull(message = "You must specify the name")
 	private String name;
@@ -22,21 +26,22 @@ public class CreateRebelRequest {
 	private String longitude;
 	
 	@NotNull(message = "You must specify the name of the base")
+	@JsonProperty("base_name")
 	private String baseName;
 	
 	@NotNull(message = "You must specify the inventory")
-	private List<InventoryRequest> inventory;
+	private List<InventoryModel> inventory;
 	
-	public CreateRebelRequest() {
+	public RebelModel() {
 	}
 
-	public CreateRebelRequest(@NotNull(message = "You must specify the name") String name,
+	public RebelModel(@NotNull(message = "You must specify the name") String name,
 			@NotNull(message = "You must specify the age") String age,
 			@NotNull(message = "You must specify the gender") String gender,
 			@NotNull(message = "You must specify the latitude") String latitude,
 			@NotNull(message = "You must specify the longitude") String longitude,
 			@NotNull(message = "You must specify the name of the base") String baseName,
-			@NotNull(message = "You must specify the inventory") List<InventoryRequest> inventory) {
+			@NotNull(message = "You must specify the inventory") List<InventoryModel> inventory) {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
@@ -45,7 +50,15 @@ public class CreateRebelRequest {
 		this.baseName = baseName;
 		this.inventory = inventory;
 	}
+	
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -94,11 +107,11 @@ public class CreateRebelRequest {
 		this.baseName = baseName;
 	}
 
-	public List<InventoryRequest> getInventory() {
+	public List<InventoryModel> getInventory() {
 		return inventory;
 	}
 
-	public void setInventory(List<InventoryRequest> inventory) {
+	public void setInventory(List<InventoryModel> inventory) {
 		this.inventory = inventory;
 	}
 

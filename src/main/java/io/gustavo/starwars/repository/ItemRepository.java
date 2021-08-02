@@ -8,4 +8,5 @@ import io.gustavo.starwars.entity.ItemEntity;
 @Repository
 public interface ItemRepository extends JpaRepository<ItemEntity, Long>{
 
+	ItemEntity findByName(String name);
 }

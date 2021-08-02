@@ -2,6 +2,8 @@ package io.gustavo.starwars.entity;
 
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Embeddable
 public class Localization {
 
@@ -9,7 +11,10 @@ public class Localization {
 	
 	private String longitude;
 	
+	@JsonProperty("base_name")
 	private String baseName;
+	
+	public Localization() {}
 	
 	public Localization(String latitude, String longitude, String baseName) {
 		this.latitude = latitude;

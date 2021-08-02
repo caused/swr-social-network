@@ -32,6 +32,8 @@ public class RebelModel {
 	@NotNull(message = "You must specify the inventory")
 	private List<InventoryModel> inventory;
 	
+	private Long accusations;
+	
 	public RebelModel() {
 	}
 
@@ -113,6 +115,14 @@ public class RebelModel {
 
 	public void setInventory(List<InventoryModel> inventory) {
 		this.inventory = inventory;
+	}
+
+	public Long getAccusations() {
+		return accusations;
+	}
+
+	public void setAccusations(Long accusations) {
+		this.accusations = accusations;
 	}
 
 	@Override

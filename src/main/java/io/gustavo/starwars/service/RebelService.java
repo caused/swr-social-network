@@ -52,4 +52,16 @@ public class RebelService {
 			throw new RebelNotFoundException("Rebel not found");
 		}
 	}
+	
+	public RebelModel blameRemel(Long id) throws RebelNotFoundException {
+		Optional<RebelEntity> optionalRebel = rebelRepository.findById(id);
+		if(optionalRebel.isPresent()) {
+			var rebel = optionalRebel.get();
+			rebel.setAccusations(rebel.getAccusations() + 1);
+			rebelRepository.save(rebel);
+			return mapper.convertEntityToModel(rebel);
+		}else {
+			throw new RebelNotFoundException("Rebel not found");
+		}
+	}
 }

@@ -55,6 +55,7 @@ public class RebelMapper {
 		model.setLatitude(entity.getLocalization().getLatitude());
 		model.setLongitude(entity.getLocalization().getLongitude());
 		model.setBaseName(entity.getLocalization().getBaseName());
+		model.setAccusations(entity.getAccusations());
 
 		entity.getInventory().stream().forEach(item ->{
 			var inventoryModel = new InventoryModel();

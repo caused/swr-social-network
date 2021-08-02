@@ -40,5 +40,12 @@ public class RebelController {
 		
 		return ResponseEntity.ok(updatedRebel);
 	}
+	
+	@PatchMapping("/{rebelId}/blame")
+	public ResponseEntity<RebelModel> blameRebel(@PathVariable Long rebelId) throws RebelNotFoundException{
+		var blameRebel = this.service.blameRemel(rebelId);
+		
+		return ResponseEntity.ok(blameRebel);
+	}
 
 }

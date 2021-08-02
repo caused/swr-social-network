@@ -35,15 +35,18 @@ public class RebelEntity {
 	@OneToMany(mappedBy = "rebel", fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<InventoryEntity> inventory;
 	
+	private Long accusations = 0L;
+	
 	public RebelEntity() {}
 
-	public RebelEntity(Long id, String name, String age, String gender, Localization localization, List<InventoryEntity> inventory) {
+	public RebelEntity(Long id, String name, String age, String gender, Localization localization, List<InventoryEntity> inventory, Long accusations) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
 		this.localization = localization;
 		this.inventory = inventory;
+		this.accusations = accusations;
 	}
 
 	public Long getId() {
@@ -93,6 +96,15 @@ public class RebelEntity {
 	public void setInventory(List<InventoryEntity> inventory) {
 		this.inventory = inventory;
 	}
+
+	public Long getAccusations() {
+		return accusations;
+	}
+
+	public void setAccusations(Long accusations) {
+		this.accusations = accusations;
+	}
+	
 	
 	
 }
